@@ -58,6 +58,9 @@ ASRCS =
 CSRCS =
 
 CXXSRCS  = libxx_cxapurevirtual.cxx libxx_eabi_atexit.cxx  libxx_cxa_atexit.cxx
+ifneq (,$(findstring y,$(CONFIG_UCLIBCXX_EXCEPTION) $(CONFIG_LIBCXX_EXCEPTION)))
+CXXSRCS += libxx__gnu_unwind_find_exidx.cxx
+endif
 
 ifneq ($(CONFIG_LIBCXX),y)
 CXXSRCS += libxx_delete.cxx libxx_delete_sized.cxx libxx_deletea.cxx

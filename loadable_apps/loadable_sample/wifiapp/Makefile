@@ -52,15 +52,18 @@
 -include $(TOPDIR)/.config
 -include $(TOPDIR)/Make.defs
 
-SRCS = wifiapp.c
+CSRCS = wifiapp.c
 ifeq ($(CONFIG_EXAMPLES_MESSAGING_TEST),y)
-SRCS += messaging.c
+CSRCS += messaging.c
 endif
 ifeq ($(CONFIG_EXAMPLES_RECOVERY_TEST),y)
-SRCS += recovery.c
+CSRCS += recovery.c
 endif
 ifeq ($(CONFIG_EXAMPLES_BINARY_UPDATE_TEST),y)
-SRCS += binary_update.c
+CSRCS += binary_update.c
+endif
+ifeq ($(CONFIG_EXAMPLES_HELLOXX_LOADABLE_TEST),y)
+CXXSRCS += helloxx.cxx
 endif
 #########################################
 # Case of Loadable separated binary build
@@ -85,7 +88,7 @@ include $(TOPDIR)/$(LOADABLEDIR)/loadable.mk
 ###################################
 else
 
-OBJS = $(SRCS:.c=$(OBJEXT))
+OBJS = $(CSRCS:.c=$(OBJEXT))
 
 BIN = ../../../apps/libapps$(LIBEXT)
 

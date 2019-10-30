@@ -61,7 +61,9 @@ int wifiapp_main(int argc, char **argv)
 #if defined(CONFIG_SYSTEM_PREAPP_INIT) && defined(CONFIG_APP_BINARY_SEPARATION)
 	preapp_start(argc, argv);
 #endif
-
+#if defined(CONFIG_EXAMPLES_HELLOXX_LOADABLE_TEST)
+	helloxx_test();
+#endif
 	printf("This is WIFI App\n");
 
 #ifndef CONFIG_EXAMPLES_MICOM_TIMER_TEST

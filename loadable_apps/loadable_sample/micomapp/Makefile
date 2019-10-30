@@ -52,12 +52,12 @@
 -include $(TOPDIR)/.config
 -include $(TOPDIR)/Make.defs
 
-SRCS = micomapp.c
+CSRCS = micomapp.c
 ifeq ($(CONFIG_EXAMPLES_MESSAGING_TEST),y)
-SRCS += messaging.c
+CSRCS += messaging.c
 endif
 ifeq ($(CONFIG_EXAMPLES_TIMER)$(CONFIG_EXAMPLES_MICOM_TIMER_TEST),yy)
-SRCS += timer.c
+CSRCS += timer.c
 OBJS += $(TOPDIR)$(DELIM)../apps/examples/timer/timer_main.o
 endif
 
@@ -84,7 +84,7 @@ include $(TOPDIR)/$(LOADABLEDIR)/loadable.mk
 ###################################
 else
 
-OBJS = $(SRCS:.c=$(OBJEXT))
+OBJS = $(CSRCS:.c=$(OBJEXT))
 
 BIN = ../../../apps/libapps$(LIBEXT)
 

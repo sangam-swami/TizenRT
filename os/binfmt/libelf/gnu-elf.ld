@@ -69,7 +69,7 @@ SECTIONS
       *(.glue_7)
       *(.glue_7t)
       *(.jcr)
-
+      *(.gcc_except_table)
       /* C++ support:  The .init and .fini sections contain specific logic
        * to manage static constructors and destructors.
        */
@@ -82,10 +82,22 @@ SECTIONS
 
   .init_section :
     {
-      _sinit = . ;
-      *(.init_array .init_array.*)
-      _einit = . ;
+      _sinit = ABSOLUTE(.);
+      KEEP(*(.init_array .init_array.*))
+      _einit = ABSOLUTE(.);
     }
+  .ARM.extab :
+    {
+      *(.ARM.extab*)
+    }
+
+  __exidx_start = ABSOLUTE(.);
+  .ARM.exidx :
+    {
+      *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+
+    }
+  __exidx_end = ABSOLUTE(.);
 
   .rodata :
     {

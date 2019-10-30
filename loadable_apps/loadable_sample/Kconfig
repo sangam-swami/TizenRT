@@ -58,6 +58,13 @@ config EXAMPLES_MICOM_TIMER_TEST
 		Enable Timer test in micom app.
 		If this test is enabled, another test will not run.
 
+config EXAMPLES_HELLOXX_LOADABLE_TEST
+	bool "Helloxx test for loadable apps"
+	default n
+	depends on HAVE_CXXINITIALIZE
+	---help---
+		Enable the Helloxx test for loadable C++ apps
+
 if EXAMPLES_MICOM_TIMER_TEST
 config EXAMPLES_MICOM_TIMER_REPEAT
 	string "Repetition Number of Micom Timer Test"
